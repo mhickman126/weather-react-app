@@ -68,6 +68,15 @@ export default function Weather() {
           </div>
         </div>
       </div>
+      <footer className="footer">
+        <a
+          className="footer"
+          href="https://github.com/mhickman126/weather-react-app"
+        >
+          Open-source code
+        </a>
+        &nbsp;by Michelle Hickman
+      </footer>
     </div>
   );
 }

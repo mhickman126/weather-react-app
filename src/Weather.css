@@ -47,3 +47,14 @@
   left: 180px;
   font-size: 21px;
 }
+
+.footer {
+  color: #46174d;
+  text-align: center;
+}
+a.footer {
+  text-decoration-line: underline;
+}
+a.footer:hover {
+  color: #46174d;
+}
