@@ -22,3 +22,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .vscode/settings.json
+
+*.md
+
+Weather_old.css
+Weather_old.js
+*.md
