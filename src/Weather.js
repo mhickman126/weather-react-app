@@ -2,24 +2,33 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
 
-export default function Weather() {
-  const [ready, setReady] = useState(false);
-  const [temperature, setTemperature] = useState(null);
+export default function Weather(props) {
+  const [weatherData, setWeatherData] = useState({ ready: false });
 
   function handleResponse(response) {
     console.log(response.data);
-    setTemperature(Math.round(response.data.temperature.current));
-    setReady(true);
+
+    setWeatherData({
+      ready: true,
+      temperature: Math.round(response.data.main.temp - 273.16),
+      humidity: response.data.main.humidity,
+      date: "Sunday 06:00",
+      description: response.data.weather[0].description,
+      iconUrl:
+        "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png",
+      wind: response.data.wind.speed,
+      city: response.data.name,
+    });
   }
 
-  if (ready) {
+  if (weatherData.ready) {
     return (
       <div className="Weather">
         <form>
           <div className="row">
             <div className="col-9">
               <input
-                type="serach"
+                type="search"
                 placeholder="Enter a city..."
                 class="form-control"
               />
@@ -36,20 +45,20 @@ export default function Weather() {
         </form>
 
         <div className="Loc-time">
-          <h1>Atlanta</h1>
-          <p className="date-time">Sunday 09:00</p>
+          <h1>{weatherData.city}</h1>
+          <p className="date-time">{weatherData.date}</p>
         </div>
         <ul>
-          <li className="description">Light Drizzle</li>
+          <li className="description">{weatherData.description}</li>
           <li className="temperature">
-            {temperature}°<span className="unit">C | F</span>
+            {weatherData.temperature}°<span className="unit">C | F</span>
           </li>
         </ul>
         <div className="row">
           <div className="col-6">
             <img
-              src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png"
-              alt="Rain"
+              src={weatherData.iconUrl}
+              alt={weatherData.description}
               className="float-left"
             />
             <div className="float-left"></div>
@@ -57,18 +66,16 @@ export default function Weather() {
 
           <div className="col-6">
             <ul>
-              <li>Precipitation: 15%</li>
-              <li>Humidity: 88%</li>
-              <li>Wind: 26 km/h</li>
+              <li>Humidity: {weatherData.humidity} %</li>
+              <li>Wind: {weatherData.wind} km/h</li>
             </ul>
           </div>
         </div>
       </div>
     );
   } else {
-    const apiKey = "a54033ao500493763d370ef6f91a68tb";
-    let city = "Atlanta";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+    const apiKey = "e98aa59f7379c095c350dff435a24df2";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}`;
     axios.get(apiUrl).then(handleResponse);
 
     return "Loading...";
