@@ -7,12 +7,14 @@ export default function Weather() {
   const [temperature, setTemperature] = useState(null);
 
   function handleResponse(response) {
-    console.log(response);
+    console.log(response.data);
+    setTemperature(Math.round(response.data.temperature.current));
+    setReady(true);
   }
 
   if (ready) {
     return (
-      <div className="weather">
+      <div className="Weather">
         <form>
           <div className="row">
             <div className="col-9">
@@ -23,20 +25,34 @@ export default function Weather() {
               />
             </div>
             <div className="col-3">
-              <input type="submit" value="Search" />
+              <input
+                type="submit"
+                value="Search"
+                className="search-btn w-100 btn "
+                autoFocus="on"
+              />
             </div>
           </div>
         </form>
 
-        <h1>Atlanta</h1>
+        <div className="Loc-time">
+          <h1>Atlanta</h1>
+          <p className="date-time">Sunday 09:00</p>
+        </div>
         <ul>
-          <li>Sunday 09:00</li>
-          <li>Light Drizzle</li>
+          <li className="description">Light Drizzle</li>
+          <li className="temperature">
+            {temperature}°<span className="unit">C | F</span>
+          </li>
         </ul>
         <div className="row">
           <div className="col-6">
-            <img src="src/weathericon.png" alt="Light Drizzle" />
-            7°C
+            <img
+              src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png"
+              alt="Rain"
+              className="float-left"
+            />
+            <div className="float-left"></div>
           </div>
 
           <div className="col-6">
@@ -54,5 +70,7 @@ export default function Weather() {
     let city = "Atlanta";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
     axios.get(apiUrl).then(handleResponse);
+
+    return "Loading...";
   }
 }
