@@ -23,8 +23,11 @@ yarn-debug.log*
 yarn-error.log*
 .vscode/settings.json
 
-*.md
+
 
 Weather_old.css
 Weather_old.js
-*.md
+# notes.md
+# *.md
+src/notes.md
+
