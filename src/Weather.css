@@ -30,13 +30,15 @@
 }
 
 .Weather .description {
-  font-size: 30px;
+  font-size: 32px;
   font-weight: 600;
 }
 
 .Weather .temperature {
-  font-size: 50px;
-  font-weight: 400;
+  font-size: 64px;
+  font-weight: 300;
+  position: relative;
+  top: -20px;
 }
 
 .Weather .unit {
@@ -50,6 +52,11 @@
 .Weather .date-time {
   font-size: 14px;
 }
+
+/* .Weather .temp-icon {
+  display: flex;
+  gap: 20px;
+} */
 
 .Weather .search-btn {
   background-color: #f7f6f4;
