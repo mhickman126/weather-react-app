@@ -1,7 +1,7 @@
 .Weather {
   font-family: "Raleway", sans-serif;
 
-  max-width: 600px;
+  max-width: 525px;
   background-color: #f7f6f4;
   color: #393e5b;
   border-radius: 4px;
@@ -52,11 +52,6 @@
 .Weather .date-time {
   font-size: 14px;
 }
-
-/* .Weather .temp-icon {
-  display: flex;
-  gap: 20px;
-} */
 
 .Weather .search-btn {
   background-color: #f7f6f4;
