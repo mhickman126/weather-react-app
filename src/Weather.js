@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Weather.css";
+import "./FormattedDate";
+import FormattedDate from "./FormattedDate";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -12,7 +14,7 @@ export default function Weather(props) {
       ready: true,
       temperature: Math.round(response.data.main.temp - 273.16),
       humidity: response.data.main.humidity,
-      date: "Sunday 06:00",
+      date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
       iconUrl:
         "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png",
@@ -30,7 +32,7 @@ export default function Weather(props) {
               <input
                 type="search"
                 placeholder="Enter a city..."
-                class="form-control"
+                className="form-control"
               />
             </div>
             <div className="col-3">
@@ -46,7 +48,9 @@ export default function Weather(props) {
 
         <div className="Loc-time">
           <h1>{weatherData.city}</h1>
-          <p className="date-time">{weatherData.date}</p>
+          <p className="date-time">
+            <FormattedDate date={weatherData.date} />
+          </p>
         </div>
         <ul>
           <li className="description">{weatherData.description}</li>
