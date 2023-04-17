@@ -1,6 +1,5 @@
 .Weather {
   font-family: "Raleway", sans-serif;
-
   max-width: 525px;
   background-color: #f7f6f4;
   color: #393e5b;
@@ -10,7 +9,8 @@
 
 .Weather h1 {
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
+  font-weight: 500;
   margin: 20px 0 0 0;
   padding-bottom: 0;
 }
@@ -35,7 +35,7 @@
 
 .Weather .description {
   font-size: 32px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .Weather .temperature {
@@ -54,7 +54,8 @@
 }
 
 .Weather .date-time {
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 .Weather .search-btn {
