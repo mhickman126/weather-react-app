@@ -43,6 +43,7 @@
   font-weight: 300;
   position: relative;
   top: -20px;
+  margin-bottom: 10px;
 }
 
 .Weather .unit {
@@ -56,6 +57,7 @@
 .Weather .date-time {
   font-size: 12px;
   font-weight: 500;
+  margin-bottom: 25px;
 }
 
 .Weather .search-btn {
